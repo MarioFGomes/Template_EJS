@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <script src="/javascripts/Aplication.js"></script>
+</head>
+
+<body>
+  <a href="/">Voltar para Home</a>
+  <h1><%= title %></h1>
+  <p>Bem-vindo a Tela de Cadastro</p>
+
+
+  <fieldset style="display: inline-block;" id="fildecadastro">
+    <legend>Login</legend>
+    <form action="/Cadastrar_pessoa" method="post" onsubmit="Validacao()">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nomes" placeholder="Digite o seu nome">
+      <br>
+      <label for="sobre_nome">Sobre Nome:</label>
+      <input type="text" id="sobre_nome" name="sobre" placeholder="Digte o seu sobrenome">
+      <br>
+      <label for="bi">B.I:</label>
+      <input type="text" id="bi" name="bi" placeholder="Digte o número do seu B.I">
+      <br>
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco" name="endereco" placeholder="Digte o seu endereço">
+      <br>
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="Digite o teu telefone">
+      <br>
+      <input type="submit" value="Enviar" id="enviar">
+    </form>
+  </fieldset>
+ 
+<br>
+<br>
+  <fieldset style="display: inline-block;" id="fildecadastro">
+    <legend>Pesquisar</legend>
+    <form action="/pesquisa" method="get">
+      <label for="nome">Pesquisar:</label>
+      <input type="text" id="nome" name="busca" placeholder="Digite o seu nome">
+      <br>
+      <input type="submit" value="Pesquisar" id="enviar">
+    </form>
+  </fieldset>
+
+  <div class="Cadastro">
+    <h1>Dados Cadastrados</h1>
+    <hr>
+    <table id="tabela" border="1">
+      <thead>
+        <tr>
+          <td>Nome</td>
+          <td>Sobre Nome</td>
+          <td>BI</td>
+          <td>Endereço</td>
+          <td>Telefone</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+
+      <tbody>   
+        <% for(i=0; i<pessoa.length; i++) { %>
+            <tr>
+            <td><%= pessoa[i].nome %></td>
+            <td><%= pessoa[i].sobrenome %></td>
+            <td><%= pessoa[i].bi %></td>
+            <td><%= pessoa[i].endereco %></td>
+            <td><%= pessoa[i].telefone %></td>
+            <td><a href="#">Editar</a></td>
+            <td><a href="#" onclick="Apagar('<%= pessoa[i].bi %>')">Apagar</a></td>
+          </tr>
+  
+        <% } %>
+  
+    </tbody>
+
+    </table>
+  </div>
+  
+</body>
+
+</html>
