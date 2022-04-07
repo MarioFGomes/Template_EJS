@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+  <script src="/jquery/jquery.js"></script>
+  <script src="/javascripts/Aplication.js"></script>
+  <script src="/backend/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+
+<body>
+  <a href="/" class="btn btn-default">Voltar para Home</a>
+  <h1><%= title %></h1>
+  <p>Bem-vindo a Tela de Cadastro</p>
+
+
+  <fieldset id="fildecadastro">
+    <legend>Criar Contato</legend>
+    <form action="/Cadastrar_pessoa" method="post" onsubmit="Validacao()">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nomes" placeholder="Digite o seu nome" class="form-control">
+      <br>
+      <label for="sobre_nome">Sobre Nome:</label>
+      <input type="text" id="sobre_nome" name="sobre" placeholder="Digte o seu sobrenome" class="form-control">
+      <br>
+      <label for="bi">B.I:</label>
+      <input type="text" id="bi" name="bi" placeholder="Digte o número do seu B.I" class="form-control">
+      <br>
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco" name="endereco" placeholder="Digte o seu endereço" class="form-control">
+      <br>
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="Digite o teu telefone" class="form-control">
+      <br>
+
+      <label for="provincia">Provincias:</label>
+      <select id="provincia" class="form-control" name="provincia" onchange="CarregarBairro()"></select>
+      <br>
+
+      <label for="bairro">Bairro:</label>
+      <select id="bairro" class="form-control" name="bairro"></select>
+      <br>
+
+      <input type="submit" value="Cadastrar" id="enviar" class="btn btn-success">
+    </form>
+  </fieldset>
+ 
+<br>
+<br>
+  <fieldset style="display: inline-block;" id="fildecadastro">
+    <legend>Pesquisar</legend>
+    <form action="/pesquisa" method="get">
+      <div class="pesquisa">
+      <input type="text" id="nome" name="busca" placeholder="Digite o seu nome" class="form-control">
+      <input type="submit" value="Pesquisar" id="enviarpesquisa" class="btn btn-primary">
+    </div>
+    </form>
+  </fieldset>
+
+  <div class="Cadastro">
+    <h1>Dados Cadastrados</h1>
+    <hr>
+    <div class="tabela-responsiva">
+    <table id="tabela"  class="table table-striped table-sm table-bordered table-hover">
+      <thead>
+        <tr>
+          <td>Nome</td>
+          <td>Sobre Nome</td>
+          <td>BI</td>
+          <td>Endereço</td>
+          <td>Telefone</td>
+          <td></td>
+          <td></td>
+        </tr>
+      </thead>
+
+      <tbody>   
+        <% for(i=0; i<pessoa.length; i++) { %>
+            <tr>
+            <td><%= pessoa[i].Nome %></td>
+            <td><%= pessoa[i].Sobrenome %></td>
+            <td><%= pessoa[i].BI %></td>
+            <td><%= pessoa[i].endereco %></td>
+            <td><%= pessoa[i].telefone %></td>
+            <td><a href="#" onclick="Alterar('<%= pessoa[i].BI %>')" class="btn btn-warning">Editar</a></td>
+            <td><a href="#" onclick="Apagar('<%= pessoa[i].BI %>')" class="btn btn-danger">Apagar</a></td>
+          </tr>
+  
+        <% } %>
+  
+    </tbody>
+
+    </table>
+  </div>
+  </div>
+  
+</body>
+
+</html>

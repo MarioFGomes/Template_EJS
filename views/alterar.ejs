@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/bootstrap/dist/css/bootstrap.min.css' />
+  <script src="/javascripts/Aplication.js"></script>
+</head>
+
+<body>
+  <a href="/" class="btn btn-default">Voltar para Home</a>
+  <h1><%= title %></h1>
+
+  <fieldset id="fildecadastro">
+    <legend>Login</legend>
+    <form action="/alterar-pessoa" method="post" onsubmit="Validacao()">
+    
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nomes" value="<%= pessoa.Nome %>" class="form-control">
+      <br>
+      <label for="sobre_nome">Sobre Nome:</label>
+      <input type="text" id="sobre_nome" name="sobre" value="<%= pessoa.Sobrenome %>" class="form-control">
+      <br>
+      <label for="bi">B.I:</label>
+      <input type="text" id="bi" name="bi" value="<%= pessoa.BI %>" readonly class="form-control">
+      <br>
+      <label for="endereco">Endereço:</label>
+      <input type="text" id="endereco" name="endereco" value="<%= pessoa.endereco %>" class="form-control">
+      <br>
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" value="<%= pessoa.telefone %>" class="form-control">
+    
+      <br>
+      <input type="submit" value="Alterar" id="enviar" class="btn btn-warning">
+    </form>
+  </fieldset>
+  
+  
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#tabela thead td{
+  font-weight: bold;
+}
+
+#tabela thead tr{
+  background-color: #bfc6c9;
+}
+
+.tabela-responsiva{
+  width: 100%;
+  overflow: scroll;
+}
+
+.pesquisa{
+  display:flex;
+}
+
+#enviarpesquisa{
+  margin-left:15px;
+}
